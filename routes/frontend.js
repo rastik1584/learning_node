@@ -9,4 +9,6 @@ router.get('/about', mainControl.produkty)
 
 router.get('/kontakt', mainControl.contact)
 
+router.get('/clanky/:id', mainControl.posts)
+
 module.exports = router
