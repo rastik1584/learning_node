@@ -11,5 +11,12 @@ module.exports = {
       title: 'Produkty',
       headline: 'Produkty'
     })
+  },
+  contact: (req, res) => {
+    res.render('contact', {
+      title: 'Kontakt',
+      headline: 'Kontakt',
+      message: 'Tu by mal byť kontakt ale žiaľ táto informácia nie je publikovateľná'
+    })
   }
 }

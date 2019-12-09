@@ -7,4 +7,6 @@ router.get('/', mainControl.index) // Define from route use controller method
 // define the about route
 router.get('/about', mainControl.produkty)
 
+router.get('/kontakt', mainControl.contact)
+
 module.exports = router
