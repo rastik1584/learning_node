@@ -1,13 +1,13 @@
 const mysql = require('mysql2')
 
-const connection = mysql.createConnection({
+const con = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
   database: 'blog'
 })
 
-connection.connect();
+con.connect();
 
 module.exports = {
   index: (req, res) => { // Method from route and other
@@ -31,11 +31,22 @@ module.exports = {
     })
   },
   posts: (req, res) => {
-    const blog = connection.query(`select * from posts where id= ${req.params.id}`, (err, rows, fields) => {
+    const blog = con.query(`select * from posts where id= ${req.params.id}`, (err, rows, fields) => {
       if(err) throw err
       res.render('posts', {
         title: 'Články',
-        headline: rows[0].title
+        headline: rows[0].title,
+        message: rows[0].full_text
+      })
+    })
+  },
+  clanky (req, res) {
+    con.query('select * from posts', (err, rows, fields) => {
+      if(err) throw err
+      res.render('clanky', {
+        title: 'Články ',
+        headline: 'Zoznam článkov',
+        posts: rows
       })
     })
   }

@@ -4,8 +4,10 @@ const mainControl = require('../controllers/MainController')
 
 // define the home page route
 router.get('/', mainControl.index) // Define from route use controller method
-// define the about route
-router.get('/about', mainControl.produkty)
+
+router.get('/produkty', mainControl.produkty)
+
+router.get('/clanky', mainControl.clanky)
 
 router.get('/kontakt', mainControl.contact)
 

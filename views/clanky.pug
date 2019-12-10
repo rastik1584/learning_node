@@ -1,0 +1,14 @@
+doctype html
+html
+  head 
+    meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    title Môj web - #{title}
+    
+  body
+    include menu
+    h1= headine
+
+    ul
+      each post in posts
+        li
+          a(href=`/clanky/${post.id}`) #{post.title}
