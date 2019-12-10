@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pokusna strank</title>
+  <style>
+    table tr td {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="width: 100%;">
+      <table style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Terrain</th>
+            <th>Surface water</th>
+            <th>Gravity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="planet in planets">
+            <td>{{ planet.name }}</td>
+            <td>{{ planet.terrain }}</td>
+            <td>{{ planet.surface_water }}</td>
+            <td>{{ planet.gravity }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data () {
+        return {
+          planets: []
+        }
+      },
+      /*created () {
+        fetch('https://swapi.co/api/planets/').then(raw => {
+          return raw.json()
+        }).then(data => {
+          this.planets = data.results;
+        })
+      }*/
+      async created() { // async je pauzovatelna funkcia 
+        let raw = await fetch('https://swapi.co/api/planets/') // await znamená že počká kým sa vykoná funkcia 
+        let data = await raw.json()
+        this.planets = data.results
+      }
+      // then() funkcia ktorá čaká na vykonanie kodu .catch(err) zachytí chybu .finally() vykoná vždy aj keď to skončí chybou.
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pokusna strank</title>
+  <style>
+    table tr td {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="width: 100%;">
+      <table style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Terrain</th>
+            <th>Surface water</th>
+            <th>Gravity</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+  </div>
+
+  <script>
+    class Clovek {
+      constructor (name) {
+        this.name = name
+      }
+
+      pozdrav() {
+        console.log(`Nazdar ja som ${this.name}`)
+      }
+    }
+
+    let clovek1 = new Clovek('Rasto')
+    let iny_clovek = new Clovek('Dodo')
+
+    clovek1.pozdrav()
+    iny_clovek.pozdrav()
+  </script>
+
+</body>
+</html>

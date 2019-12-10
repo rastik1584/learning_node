@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pokusna strank</title>
+  <style>
+    table tr td {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="width: 100%;">
+      <table style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Terrain</th>
+            <th>Surface water</th>
+            <th>Gravity</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $.ajax({
+      url: 'https://swapi.co/api/planets/',
+      method: 'GET'
+    }).done(data => {
+      $(data.results).each((index, planet) => {
+        const $row = $('<tr>')
+          .append($('<td>', { text: planet.name})) 
+          .append($('<td>', { text: planet.terrain})) 
+          .append($('<td>', { text: planet.surface_water})) 
+          .append($('<td>', { text: planet.gravity})) 
+          $('#app tbody').append($row)
+      })
+    })
+  </script>
+
+</body>
+</html>
